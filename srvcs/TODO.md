@@ -1,0 +1,6 @@
+- [x] `urlias.py`: Main REPL / User Interface
+- [x] `data/urlsav.py`: URL State Management
+- [x] `srvcs/chks.py`: Network Services (Status/Ping)
+- [ ] `srvcs/iatr.py`: IA Tree Output (In Progress)
+- [ ] `srvcs/lnks.py`: Link Crawler (In Progress)
+- [x] `requirements.txt`: Project Dependencies
