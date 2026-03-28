@@ -1,6 +1,30 @@
 - [x] `urlias.py`: Main REPL / User Interface
 - [x] `data/urlsav.py`: URL State Management
 - [x] `srvcs/chks.py`: Network Services (Status/Ping)
-- [ ] `srvcs/iatr.py`: IA Tree Output (In Progress)
-- [ ] `srvcs/lnks.py`: Link Crawler (In Progress)
-- [x] `requirements.txt`: Project Dependencies
+- [ ] `srvcs/iatr.py`: IA Tree Output (ToDo)
+- [ ] `srvcs/lnks.py`: Link Crawler (ToDo)
+- [ ] `srvcs/audit.py`: Heading audit (ToDo)
+- [ ] `tests/test_chks.py`: Unit Tests (In Progress)
+- [ ] `utils/rdbls.py`: Functions for readable output (In Progress)
+
+TESTS
+status
+- [ ] good response
+- [ ] error response
+- [ ] bad url input
+- [ ] empty input
+
+ping
+- [ ] good response
+- [ ] error response
+- [ ] bad url input
+- [ ] empty input
+- [ ] time out
+
+links crawl
+
+heading audit
+
+tree generation
+
+readable outputs

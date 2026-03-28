@@ -1,76 +1,73 @@
 from srvcs import chks, lnks, iatr
 from data import urlsav as my_url
+from utils import rdbls
 
-###REPL logic for interacting with URL,IA&S services
+###REPL logic for interacting with URL,IA&S services###
 
+#user commands
+COMMAND_KEYS = ['H', 'S', 'C', 'P', 'L', 'T', 'Q', 'A']
+
+#print the current url
 def printurl():
     print(my_url.get_url())
 
+#print list of strings
 def printmultiple(links: list, label: str):
     print(str(len(links)), " links found")
     if links:
         for c_link in links:
             print(c_link)
 
-def get_readable_status(status):
-    match status:
-        case 200:
-            return("OK")
-        case 204:
-            return("No Content")
-        case 301:
-            return("Moved Permanently")
-        case 302:
-            return("Found")
-        case 304:
-            return("Not Modified")
-        case 400:
-            return("Bad Request")
-        case 401:
-            return("Unauthorized")
-        case 403:
-            return("Forbidden")
-        case 404:
-            return("Not Found")
-        case 429:
-            return("Too Many Requests")
-        case 500:
-            return("Internal Server Error")
-        case 502:
-            return("Bad Gateway")
-        case 503:
-            return("Service Unavailable")
-        case 504:
-            return("Gateway Timeout")
-        case 0:
-            return("ERROR (Check Failed)")
-        case _:
-            return("Unknown Status")
-
+#prompt user to set the current url
 def set_url():
     my_url.set_url(input("Input URL: "))
 
+###Opening Message###
 print("Welcome to URL,IA&S REPL")
+print("Where to Start: [S]et URL, [C]heck Status, [P]ing, [L]ink Check, [T]ree, [H]elp, [Q]uit")
+###Opening Message###
 
 while True:
 
-    usrcmd = input("Options: [S]et URL, [C]heck, [P]ing, [L]ink Check, [T]ree, [Q]uit\n->").upper()
+    ###ToDo: Overload to run multiple commands
+    #       Overload to set url when inputing command
+    usrcmd = input("->").upper()
 
-    if usrcmd == 'Q':
+    ###Check commands that do not require a url, 
+    #if none of them are used but command is recognised and url is empty, prompt to set url
+    if not usrcmd:
+        continue
+    elif usrcmd not in COMMAND_KEYS:
+        #ToDo: Check if input was a URL, set url
+        print("[ERR] Unrecognized Input: '", usrcmd, "'")
+    elif usrcmd == 'Q': #[Q]uit
         break
-    elif usrcmd == 'S':
+    elif usrcmd == 'H': #[H]elp
+        rdbls.print_user_commands(COMMAND_KEYS)
+    elif usrcmd == 'S' or not my_url.get_url():
         set_url()
-    elif my_url.get_url() == "":
-            set_url()
         
-    if usrcmd == "C":
+    #Check commands that require a url
+    if usrcmd == "C": #[C]heck Status
         printurl()
-        print("Checking...")
-        print("Status: ", str(chks.status(my_url.get_url())), ", ", 
-            get_readable_status(chks.status(my_url.get_url())))
-    if usrcmd == "P":
+        print("Checking...", )
+        rsp_code = chks.status(my_url.get_url())
+        print("Status: ", str(rsp_code), ", ", 
+            rdbls.get_readable_status(rsp_code))
+    elif usrcmd == "P": #[P]ing
         printurl()
         print("Pinging...")
         print("Ping (ms): ", chks.ping(my_url.get_url()))
-
+    elif usrcmd == "L": #[L]ink Check
+        printurl()
+        #print("Checking links...")
+        print("Link checks - coming soon")
+    elif usrcmd == "T": #[T]ree
+        printurl()
+        #print("Generating IA Tree...")
+        print("IA Tree - coming soon")
+    elif usrcmd == "A": # [A]duit Headings
+        printurl()
+        #print("Auditing headings...")
+        print("Heading Audit - coming soon")
 print ("LATER.")
