@@ -8,11 +8,12 @@
 - [ ] `utils/rdbls.py`: Functions for readable output (In Progress)
 
 TESTS
+
 status
-- [ ] good response
-- [ ] error response
-- [ ] bad url input
-- [ ] empty input
+- [x] good response
+- [x] error response
+- [x] bad url input
+- [x] empty input
 
 ping
 - [ ] good response
