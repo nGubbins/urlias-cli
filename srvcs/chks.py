@@ -10,7 +10,7 @@ def status(url: str):
     except rq.exceptions.RequestException:
         return 0
 
-#elapsed time to get url request
+#elapsed time to get url request [latency]
 def ping(url: str):
     try:
         return rq.get(url).elapsed.total_seconds()
