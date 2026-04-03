@@ -16,10 +16,10 @@ status
 - [x] empty input
 
 ping
-- [ ] good response
-- [ ] error response
-- [ ] bad url input
-- [ ] empty input
+- [x] successful
+- [x] unsuccessflu
+- [x] bad url input
+- [x] empty input
 - [ ] time out
 
 links crawl
