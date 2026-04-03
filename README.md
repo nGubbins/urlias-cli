@@ -9,7 +9,7 @@
   Returns the status of the URL (200, 404, 403, etc)
 
 ## P - ping url
-    Single response time / latency check.
+  Single response time / latency check.
 
 ## T - generate IA tree [coming soon]
 ## L - get lists of internal or external links [coming soon]
