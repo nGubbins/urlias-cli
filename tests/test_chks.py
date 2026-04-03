@@ -3,9 +3,9 @@ import requests as rq
 from srvcs.chks import status, ping
 
 #STATUS CHECKS
-#check good response
+#Check good response
 def test_check_good_response(mocker):
-    print("Good Response Test...")
+    print("Check good response test...")
     mock = mocker.patch("srvcs.chks.rq.get")
     mock.return_value.status_code = 200
     testurl = "https://test1.com"
@@ -13,19 +13,19 @@ def test_check_good_response(mocker):
     assert status_result == 200
     mock.assert_called_once_with(testurl)
 
-#check error response
+#Check bad response
 def test_check_bad_response(mocker):
-    print("Bad Response Test...")
+    print("Check bad response test...")
     mock = mocker.patch("srvcs.chks.rq.get")
     mock.return_value.status_code = 404
-    testurl = "https://test2.com"
+    testurl = "https://test1.com"
     status_result = status(testurl)
     assert status_result == 404
     mock.assert_called_once_with(testurl)
 
-#check bad url input
-def test_check_bad_input(mocker):
-    print("Bad Input Test...")
+#Check exception
+def test_check_network_exception(mocker):
+    print("Check bad input test...")
     mock = mocker.patch("srvcs.chks.rq.get")
     mock.side_effect = rq.exceptions.RequestException
     testurl = "#^#%&%&#$&$$$@^"
@@ -33,21 +33,10 @@ def test_check_bad_input(mocker):
     assert status_result == 0
     mock.assert_called_once_with(testurl)
 
-
-#check empty input
-def test_check_empty_input(mocker):
-    print("Empty Input Test...")
-    mock = mocker.patch("srvcs.chks.rq.get")
-    mock.side_effect = rq.exceptions.RequestException
-    testurl = ""
-    status_result = status(testurl)
-    assert status_result == 0
-    mock.assert_called_once_with(testurl)
-
 #PING CHECKS
-#successful ping
+#Successful ping
 def test_successful_ping(mocker):
-    print("Bad Input Test...")
+    print("Ping succeeded test...")
     mock = mocker.patch("srvcs.chks.rq.get")
     mock.return_value.elapsed.total_seconds.return_value = 0.1
     testurl = "https://test1.com"
@@ -55,19 +44,9 @@ def test_successful_ping(mocker):
     assert ping_result == 100.0 # ping is returning latency in ms
     mock.assert_called_once_with(testurl)
 
-#failed ping
-def test_failed_ping(mocker):
-    print("Bad Input Test...")
-    mock = mocker.patch("srvcs.chks.rq.get")
-    mock.side_effect = rq.exceptions.RequestException
-    testurl = "https://test1.com"
-    ping_result = ping(testurl)
-    assert ping_result == -1
-    mock.assert_called_once_with(testurl)
-
-#bad url input
-def test_ping_bad_input(mocker):
-    print("Bad Input Test...")
+#Ping exception
+def test_ping_network_exception(mocker):
+    print("Ping bad input test...")
     mock = mocker.patch("srvcs.chks.rq.get")
     mock.side_effect = rq.exceptions.RequestException
     testurl = "#^#%&%&#$&$$$@^"
@@ -75,15 +54,13 @@ def test_ping_bad_input(mocker):
     assert ping_result == -1
     mock.assert_called_once_with(testurl)
 
-#empty input
-def test_ping_empty_input(mocker):
-    print("Bad Input Test...")
+#force timeout
+def test_ping_timeout(mocker):
+    print("Ping timout test...")
     mock = mocker.patch("srvcs.chks.rq.get")
-    mock.side_effect = rq.exceptions.RequestException
-    testurl = ""
+    mock.side_effect = rq.exceptions.Timeout
+    testurl = "https://test1.com"
     ping_result = ping(testurl)
     assert ping_result == -1
-    mock.assert_called_once_with(testurl)
-
-#force timeout
+    mock.asset_called_once_with(testurl)
 
