@@ -5,7 +5,7 @@ from utils import rdbls
 ###REPL logic for interacting with URL,IA&S services###
 
 #user commands
-COMMAND_KEYS = ['H', 'S', 'C', 'P', 'L', 'T', 'Q', 'A']
+COMMAND_KEYS = ['H', "HELP", 'S', 'C', 'P', 'L', 'T', 'Q', 'A']
 
 #print the current url
 def printurl():
@@ -23,7 +23,7 @@ def set_url():
     my_url.set_url(input("Input URL: "))
 
 ###Opening Message###
-print("Welcome to URL,IA&S REPL")
+print("\nWelcome to URL,IA&S REPL")
 print("Where to Start: [S]et URL, [C]heck Status, [P]ing, [L]ink Check, [T]ree, [H]elp, [Q]uit")
 ###Opening Message###
 
@@ -31,18 +31,17 @@ while True:
 
     ###ToDo: Overload to run multiple commands
     #       Overload to set url when inputing command
-    usrcmd = input("->").upper()
-
+    usrcmd = input("\n->").upper()
     ###Check commands that do not require a url, 
     #if none of them are used but command is recognised and url is empty, prompt to set url
     if not usrcmd:
         continue
     elif usrcmd not in COMMAND_KEYS:
         #ToDo: Check if input was a URL, set url
-        print("[ERR] Unrecognized Input: '", usrcmd, "'")
+        print("[ERR] Unrecognized Command: '", usrcmd, "'")
     elif usrcmd == 'Q': #[Q]uit
         break
-    elif usrcmd == 'H': #[H]elp
+    elif usrcmd == 'H' or usrcmd == "HELP": #[H]elp
         rdbls.print_user_commands(COMMAND_KEYS)
     elif usrcmd == 'S' or not my_url.get_url():
         set_url()
