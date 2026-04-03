@@ -52,7 +52,7 @@ def test_successful_ping(mocker):
     mock.return_value.elapsed.total_seconds.return_value = 0.1
     testurl = "https://test1.com"
     ping_result = ping(testurl)
-    assert ping_result == 0.1
+    assert ping_result == 100.0 # ping is returning latency in ms
     mock.assert_called_once_with(testurl)
 
 #failed ping
@@ -60,7 +60,6 @@ def test_failed_ping(mocker):
     print("Bad Input Test...")
     mock = mocker.patch("srvcs.chks.rq.get")
     mock.side_effect = rq.exceptions.RequestException
-    #mock.return_value.elapsed.total_seconds.return_value = 0.1
     testurl = "https://test1.com"
     ping_result = ping(testurl)
     assert ping_result == -1
