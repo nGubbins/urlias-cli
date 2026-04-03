@@ -52,5 +52,11 @@ def get_command_description(cmd: str):
             return "[L]ink Check - list links from the current URL"
         case 'T':
             return "[T]ree - generate an IA tree from the current URL"
+        case 'A':
+            return "[A]udit headings - check for duplicate headings in html"
         case 'Q':
             return "[Q]uit - quit the program"
+        case "README":
+            return "[README] - View README.md"
+        case "HELP":
+            return "[HELP] - Alternate option for the this menu."

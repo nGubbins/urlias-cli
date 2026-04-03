@@ -5,7 +5,7 @@ from utils import rdbls
 ###REPL logic for interacting with URL,IA&S services###
 
 #user commands
-COMMAND_KEYS = ['H', "HELP", 'S', 'C', 'P', 'L', 'T', 'Q', 'A']
+COMMAND_KEYS = ['H', "HELP", "README", 'S', 'C', 'P', 'L', 'A', 'T', 'Q']
 
 #print the current url
 def printurl():
@@ -24,7 +24,7 @@ def set_url():
 
 ###Opening Message###
 print("\nWelcome to URL,IA&S REPL")
-print("Where to Start: [S]et URL, [C]heck Status, [P]ing, [L]ink Check, [T]ree, [H]elp, [Q]uit")
+print("Where to Start: [S]et URL, [C]heck Status, [P]ing, [L]ink Check, [T]ree, [H]elp, [README], [Q]uit")
 ###Opening Message###
 
 while True:
@@ -43,6 +43,12 @@ while True:
         break
     elif usrcmd == 'H' or usrcmd == "HELP": #[H]elp
         rdbls.print_user_commands(COMMAND_KEYS)
+    elif usrcmd == "README":
+        try:
+            with open("README.md", "r") as f:
+                print(f.read())
+        except FileNotFoundError:
+            print("[ERR] README.md not found.")
     elif usrcmd == 'S' or not my_url.get_url():
         set_url()
         
