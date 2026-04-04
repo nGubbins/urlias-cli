@@ -11,7 +11,20 @@
 ## P - ping url
   Single response time / latency check.
 
+## L - link check menu
+### A - all links
+  Returns a list of all links
+### I - internal links
+  Returns a list of internal links
+### E - external links
+  Returns a list of external links
+### C - contact links
+  Returns a list of contact links ('mailto:' and 'tel:')
+### IMG - Image links
+  Returns a list of image links (".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg")
+### Q - quit link checks
+  Returns to the main menu
+
 ## T - generate IA tree [coming soon]
-## L - get lists of internal or external links [coming soon]
-## A - audit tags for seo [coming soon]
+## A - audit duplicate headings [coming soon]
 ## Q - quit URLIAS CLI
