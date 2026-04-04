@@ -67,26 +67,28 @@ while True:
         print("Pinging...")
         print("Ping (ms): ", chks.ping(my_url.store.get_url()))
     elif usrcmd == "L": #[L]ink Check
+        print("\nLink Checks")
         printurl()
         print("Options: [I]nternal links, [E]xternal links, [A]ll links, [C]ontact links, [IMG]age links, [Q]uit Link Check")
-        lnkcmd = input("\nl->").upper()
-        if lnkcmd == 'Q':
-            continue
-        if lnkcmd == "A" or lnkcmd not in LINK_COMMANDS:
-            print("Getting all links...")
-            printmultiple(lnks.get_links(my_url.store.get_url()))
-        elif lnkcmd == "I":
-            print("Getting internal links...")
-            printmultiple(lnks.get_internal_links(my_url.store.get_url()))
-        elif lnkcmd == "E":
-            print("Getting external links...")
-            printmultiple(lnks.get_external_links(my_url.store.get_url()))
-        elif lnkcmd == "C":
-            print("Getting contact links...")
-            printmultiple(lnks.get_contact_links(my_url.store.get_url()))
-        elif lnkcmd == "IMG":
-            print("Getting image links...")
-            printmultiple(lnks.get_image_links(my_url.store.get_url()))
+        while True:
+            lnkcmd = input("\nl->").upper()
+            if lnkcmd == 'Q':
+                break
+            elif lnkcmd == "A" or lnkcmd not in LINK_COMMANDS:
+                print("Getting all links...")
+                printmultiple(lnks.get_links(my_url.store.get_url()))
+            elif lnkcmd == "I":
+                print("Getting internal links...")
+                printmultiple(lnks.get_internal_links(my_url.store.get_url()))
+            elif lnkcmd == "E":
+                print("Getting external links...")
+                printmultiple(lnks.get_external_links(my_url.store.get_url()))
+            elif lnkcmd == "C":
+                print("Getting contact links...")
+                printmultiple(lnks.get_contact_links(my_url.store.get_url()))
+            elif lnkcmd == "IMG":
+                print("Getting image links...")
+                printmultiple(lnks.get_image_links(my_url.store.get_url()))
     elif usrcmd == "T": #[T]ree
         printurl()
         #print("Generating IA Tree...")
