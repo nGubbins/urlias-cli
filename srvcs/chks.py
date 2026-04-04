@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup as soupy
 import requests as rq
 
 ###individual checks against a specific url - status, ping

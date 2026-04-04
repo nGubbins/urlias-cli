@@ -6,17 +6,20 @@ from utils import rdbls
 
 #user commands
 COMMAND_KEYS = ['H', "HELP", "README", 'S', 'C', 'P', 'L', 'A', 'T', 'Q']
+LINK_COMMANDS = ['I', 'E', 'A', 'C', 'IMG']
 
 #print the current url
 def printurl() -> None:
     print(my_url.store.get_url())
 
-#print list of strings
-def printmultiple(links: list, label: str) -> None:
-    print(str(len(links)), " links found")
+#print list of links
+def printmultiple(links: list) -> None:
     if links:
         for c_link in links:
             print(c_link)
+        print(str(len(links)), " links found")
+    else:
+        print("Nothing found.")
 
 #prompt user to set the current url
 def set_url() -> None:
@@ -65,8 +68,25 @@ while True:
         print("Ping (ms): ", chks.ping(my_url.store.get_url()))
     elif usrcmd == "L": #[L]ink Check
         printurl()
-        #print("Checking links...")
-        print("Link checks - coming soon")
+        print("Options: [I]nternal links, [E]xternal links, [A]ll links, [C]ontact links, [IMG]age links, [Q]uit Link Check")
+        lnkcmd = input("\nl->").upper()
+        if lnkcmd == 'Q':
+            continue
+        if lnkcmd == "A" or lnkcmd not in LINK_COMMANDS:
+            print("Getting all links...")
+            printmultiple(lnks.get_links(my_url.store.get_url()))
+        elif lnkcmd == "I":
+            print("Getting internal links...")
+            printmultiple(lnks.get_internal_links(my_url.store.get_url()))
+        elif lnkcmd == "E":
+            print("Getting external links...")
+            printmultiple(lnks.get_external_links(my_url.store.get_url()))
+        elif lnkcmd == "C":
+            print("Getting contact links...")
+            printmultiple(lnks.get_contact_links(my_url.store.get_url()))
+        elif lnkcmd == "IMG":
+            print("Getting image links...")
+            printmultiple(lnks.get_image_links(my_url.store.get_url()))
     elif usrcmd == "T": #[T]ree
         printurl()
         #print("Generating IA Tree...")
