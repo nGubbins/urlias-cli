@@ -1,4 +1,4 @@
-def get_readable_status(status):
+def get_readable_status(status: int) -> str:
     match status:
         case 200:
             return("OK")
@@ -33,12 +33,12 @@ def get_readable_status(status):
         case _:
             return("Unknown Status")
 
-def print_user_commands(cmdlst: list):
+def print_user_commands(cmdlst: list) -> None:
     for cmd in cmdlst:
         print(get_command_description(cmd))
 
 
-def get_command_description(cmd: str):
+def get_command_description(cmd: str) -> str:
     match cmd:
         case 'H':
             return "[H]elp - get a list of commands and decscriptions"

@@ -8,18 +8,18 @@ from utils import rdbls
 COMMAND_KEYS = ['H', "HELP", "README", 'S', 'C', 'P', 'L', 'A', 'T', 'Q']
 
 #print the current url
-def printurl():
+def printurl() -> None:
     print(my_url.store.get_url())
 
 #print list of strings
-def printmultiple(links: list, label: str):
+def printmultiple(links: list, label: str) -> None:
     print(str(len(links)), " links found")
     if links:
         for c_link in links:
             print(c_link)
 
 #prompt user to set the current url
-def set_url():
+def set_url() -> None:
     my_url.store.set_url(input("Input URL: "))
 
 ###Opening Message###
