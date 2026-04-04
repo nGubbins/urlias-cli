@@ -1,13 +1,15 @@
-cur_url = ""
-
 ###persistant URL save
+class URLStore: 
+    def __init__(self):
+        self._url = ""
 
-#set current url
-def set_url(url):
-    global cur_url
-    cur_url = url
-    return cur_url
+    #set current url
+    def set_url(self, url: str) -> str:
+        self._url = url
+        return self._url
 
-#get current url scheme
-def get_url():
-    return cur_url
+    #get current url
+    def get_url(self) -> str:
+        return self._url
+
+store = URLStore()    

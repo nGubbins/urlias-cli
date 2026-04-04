@@ -9,7 +9,7 @@ COMMAND_KEYS = ['H', "HELP", "README", 'S', 'C', 'P', 'L', 'A', 'T', 'Q']
 
 #print the current url
 def printurl():
-    print(my_url.get_url())
+    print(my_url.store.get_url())
 
 #print list of strings
 def printmultiple(links: list, label: str):
@@ -20,7 +20,7 @@ def printmultiple(links: list, label: str):
 
 #prompt user to set the current url
 def set_url():
-    my_url.set_url(input("Input URL: "))
+    my_url.store.set_url(input("Input URL: "))
 
 ###Opening Message###
 print("\nWelcome to URL,IA&S REPL")
@@ -49,20 +49,20 @@ while True:
                 print(f.read())
         except FileNotFoundError:
             print("[ERR] README.md not found.")
-    elif usrcmd == 'S' or not my_url.get_url():
+    elif usrcmd == 'S' or not my_url.store.get_url():
         set_url()
         
     #Check commands that require a url
     if usrcmd == "C": #[C]heck Status
         printurl()
         print("Checking...", )
-        rsp_code = chks.status(my_url.get_url())
+        rsp_code = chks.status(my_url.store.get_url())
         print("Status: ", str(rsp_code), ", ", 
             rdbls.get_readable_status(rsp_code))
     elif usrcmd == "P": #[P]ing
         printurl()
         print("Pinging...")
-        print("Ping (ms): ", chks.ping(my_url.get_url()))
+        print("Ping (ms): ", chks.ping(my_url.store.get_url()))
     elif usrcmd == "L": #[L]ink Check
         printurl()
         #print("Checking links...")
