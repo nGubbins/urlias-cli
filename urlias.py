@@ -1,4 +1,4 @@
-from srvcs import chks, lnks, iatr
+from srvcs import chks, lnks, iatr, audit
 from data import urlsav as my_url
 from utils import rdbls
 
@@ -17,7 +17,7 @@ def printmultiple(links: list) -> None:
     if links:
         for c_link in links:
             print(c_link)
-        print(str(len(links)), " links found")
+        print(str(len(links)), " items found")
     else:
         print("Nothing found.")
 
@@ -94,7 +94,20 @@ while True:
         #print("Generating IA Tree...")
         print("IA Tree - coming soon")
     elif usrcmd == "A": # [A]duit Headings
+        print("\nTag Audit")
         printurl()
-        #print("Auditing headings...")
-        print("Heading Audit - coming soon")
+        print("Options: [A]ll headings, [S]pecific tag, [Q]uit tag audit")
+        while True:
+            auditcmd = input("\na->").upper()
+            if auditcmd == 'Q':
+                break
+            elif auditcmd == 'A':
+                printurl()
+                print("Getting all headings...")
+                printmultiple(audit.check_all_headings(my_url.store.get_url()))
+            elif auditcmd == 'S':
+                printurl()
+                usertag = input("\nTag to check->")
+                print("Getting specific tag instances...")
+                printmultiple(audit.check_specific_tags(my_url.store.get_url(), usertag))
 print ("LATER.")
