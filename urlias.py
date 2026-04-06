@@ -144,6 +144,7 @@ while True:
 
         print("\nRunning Tag Audit...")
         print(len(audit.check_all_headings(my_url.store.get_url())), " Unique Headings")
+        print(len(audit.check_duplicate_headings(my_url.store.get_url())), " Duplicates")
         print(len(audit.check_specific_tags(my_url.store.get_url(), "h1")), " <h1> Headings")
         print(len(audit.check_specific_tags(my_url.store.get_url(), "h2")), " <h2> Headings")
         print(len(audit.check_specific_tags(my_url.store.get_url(), "h3")), " <h3> Headings")
