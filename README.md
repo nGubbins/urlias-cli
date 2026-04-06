@@ -71,6 +71,8 @@ CHECK COMPLETE.
   ('h1', 'Heading content')
   ('h2', 'Heading content')
   ```
+### R - all headings (raw)
+  List of all unique headings (does not specify heading type)
 ### D - duplicate headings
   Returns a sorted list of duplicate headings (same type and content).
 ### S - specific tag
