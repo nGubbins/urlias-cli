@@ -37,7 +37,7 @@ def check_raw_headings(url: str) -> list[str]:
 
     return sorted(headings)
 
-#return a list of all headings with duplicates
+#return a list of duplicate headings (same type and content)
 def check_duplicate_headings(url: str) -> list[str,int,str]:
     try:
         response = rq.get(url, timeout=10)
@@ -45,7 +45,6 @@ def check_duplicate_headings(url: str) -> list[str,int,str]:
     except rq.exceptions.RequestException:
         return ["",0,""]
     
-    #Sort: heading type (h1s, h2s, h3s, etc) and then number of occurrences (lowest to highest)
     soup = soupy(response.text, "html.parser")
     headings = []
 
@@ -67,7 +66,7 @@ def check_duplicate_headings(url: str) -> list[str,int,str]:
 
     return sorted(duplicates)
 
-#return a list of all content within the specified tag type
+#return a list of all unique content within the specified tag type
 def check_specific_tags(url: str, tagtype: str) -> list[str]:
     try:
         response = rq.get(url, timeout=10)
@@ -91,7 +90,6 @@ def check_full_page(url: str) -> list[str]:
     except rq.exceptions.RequestException:
         return []
     
-    #Sort: heading type (h1s, h2s, h3s, etc) and then number of occurrences (lowest to highest)
     soup = soupy(response.text, "html.parser")
     headings = []
 
