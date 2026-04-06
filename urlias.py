@@ -100,7 +100,7 @@ while True:
     elif usrcmd == "A": # [A]duit Headings
         print("\nTag Audit")
         printurl()
-        print("Options: [A]ll headings, [S]pecific tag, [Q]uit tag audit")
+        print("Options: [A]ll headings, [S]pecific tag, [D]uplicates [Q]uit tag audit")
         while True:
             auditcmd = input("\na->").upper()
             if auditcmd == 'Q':
@@ -114,6 +114,10 @@ while True:
                 usertag = input("\nTag to check->")
                 print("Getting specific tag instances...")
                 printmultiple(audit.check_specific_tags(my_url.store.get_url(), usertag))
+            elif auditcmd == 'D':
+                printurl()
+                print("Checking for duplicate headings...")
+                printmultiple(audit.check_duplicate_headings(my_url.store.get_url()))
     elif usrcmd == "F": #[F]ull Audit
         printurl()
         print("Running Full URL Audit...")

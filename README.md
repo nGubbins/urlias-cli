@@ -13,6 +13,9 @@
 ## P - ping url
   Single response time / latency check.
 
+## R - read html
+  Lists each html element in order it appears on the page ("h1", "h2", "h3", "h4", "h5", "h6", "p", "table", "li")
+
 ## F - full url audit
   Prints site info
   ```
@@ -68,6 +71,8 @@ CHECK COMPLETE.
   ('h1', 'Heading content')
   ('h2', 'Heading content')
   ```
+### D - duplicate headings
+  Returns a sorted list of duplicate headings (same type and content).
 ### S - specific tag
   Requests tag to check.
   Returns a sorted list of content using the specified tag.

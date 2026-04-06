@@ -48,6 +48,8 @@ def get_command_description(cmd: str) -> str:
             return "[C]heck Status - get the status code of URL request"
         case 'P':
             return "[P]ing - get the response time of the URL request"
+        case 'R':
+            return "[R]ead - see all page text"
         case 'F':
             return "[F]ull URL Check - run all checks on current URL"
         case 'L':
