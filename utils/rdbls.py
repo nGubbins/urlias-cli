@@ -53,7 +53,7 @@ def get_command_description(cmd: str) -> str:
         case 'T':
             return "[T]ree - generate an IA tree from the current URL"
         case 'A':
-            return "[A]udit headings - check for duplicate headings in html"
+            return "[A]udit tags - check heads and tags in URL HTML"
         case 'Q':
             return "[Q]uit - quit the program"
         case "README":

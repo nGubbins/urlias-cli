@@ -31,12 +31,13 @@
 ### A - all headings
   Returns a sorted list of all headigs (h1, h2, h3, h4, h5, h6), including tag type
   ```
-  ("h1", "Heading content")
-  ("h2", "Heading content")
+  ///Example elements in return list
+  ('h1', 'Heading content')
+  ('h2', 'Heading content')
   ```
 ### S - specific tag
-  Requests tag to check
-  Returns a sorted list of content using the specified tag
+  Requests tag to check.
+  Returns a sorted list of content using the specified tag.
 ### Q - quit tag audit
   Returns to the main menu
 
