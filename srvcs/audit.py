@@ -97,6 +97,6 @@ def check_full_page(url: str) -> list[str]:
 
     for tag in soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6", "p", "table", "li"]):
        # newtag = [tag.get_text(strip=True), tag.name]
-        headings.append(tag.get_text(strip=True))
+        headings.append(tag.get_text(strip=True) + "\n")
 
     return headings
