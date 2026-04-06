@@ -13,6 +13,39 @@
 ## P - ping url
   Single response time / latency check.
 
+## F - full url audit
+  Prints site info
+  ```
+  ///Example Output
+  https://www.scrapethissite.com/pages/simple/
+Running Full URL Audit...
+
+Running Latency Check...
+Ping (ms):  1004.9200000000001
+
+Running Status Check...
+Status:  200 ,  OK
+
+Running Link Check...
+6  Total Links
+5  Internal Links
+1  External Links
+0  Contact Links
+0  Image Links
+
+Running Tag Audit...
+251  Unique Headings
+1  <h1> Headings
+0  <h2> Headings
+250  <h3> Headings
+0  <h4> Headings
+0  <h5> Headings
+0  <h6> Headings
+3  <p> Paragraphs
+
+CHECK COMPLETE.
+  ```
+
 ## L - link check menu
 ### A - all links
   Returns a sorted list of all links

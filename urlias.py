@@ -5,7 +5,7 @@ from utils import rdbls
 ###REPL logic for interacting with URL,IA&S services###
 
 #user commands
-COMMAND_KEYS = ['H', "HELP", "README", 'S', 'C', 'P', 'L', 'A', 'T', 'Q']
+COMMAND_KEYS = ['H', "HELP", "README", 'S', 'C', 'P', 'L', 'A', 'T', 'F', 'Q']
 LINK_COMMANDS = ['I', 'E', 'A', 'C', 'IMG']
 
 #print the current url
@@ -110,4 +110,37 @@ while True:
                 usertag = input("\nTag to check->")
                 print("Getting specific tag instances...")
                 printmultiple(audit.check_specific_tags(my_url.store.get_url(), usertag))
+    elif usrcmd == "F": #[F]ull audit
+        printurl()
+        print("Running Full URL Audit...")
+
+        print("\nRunning Latency Check...")
+        print("Ping (ms): ", chks.ping(my_url.store.get_url()))
+
+        print("\nRunning Status Check...")
+        rsp_code = chks.status(my_url.store.get_url())
+        print("Status: ", str(rsp_code), ", ", 
+            rdbls.get_readable_status(rsp_code))
+        
+        print("\nRunning Link Check...")
+        # print(len(audit.check_specific_tags(my_url.store.get_url(), "a")), " <a> Elements")
+        print(len(lnks.get_links(my_url.store.get_url())), " Total Links")
+        print(len(lnks.get_internal_links(my_url.store.get_url())), " Internal Links")
+        print(len(lnks.get_external_links(my_url.store.get_url())), " External Links")
+        print(len(lnks.get_contact_links(my_url.store.get_url())), " Contact Links")
+        print(len(lnks.get_image_links(my_url.store.get_url())), " Image Links")
+
+        print("\nRunning Tag Audit...")
+        print(len(audit.check_all_headings(my_url.store.get_url())), " Unique Headings")
+        print(len(audit.check_specific_tags(my_url.store.get_url(), "h1")), " <h1> Headings")
+        print(len(audit.check_specific_tags(my_url.store.get_url(), "h2")), " <h2> Headings")
+        print(len(audit.check_specific_tags(my_url.store.get_url(), "h3")), " <h3> Headings")
+        print(len(audit.check_specific_tags(my_url.store.get_url(), "h4")), " <h4> Headings")
+        print(len(audit.check_specific_tags(my_url.store.get_url(), "h5")), " <h5> Headings")
+        print(len(audit.check_specific_tags(my_url.store.get_url(), "h6")), " <h6> Headings")
+        print(len(audit.check_specific_tags(my_url.store.get_url(), "p")), " <p> Paragraphs")
+        # print(len(audit.check_specific_tags(my_url.store.get_url(), "div")), " <div> Sections")
+
+        print("\nCHECK COMPLETE.")
+
 print ("LATER.")
