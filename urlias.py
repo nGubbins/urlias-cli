@@ -5,7 +5,7 @@ from utils import rdbls
 ###REPL logic for interacting with URL,IA&S services###
 
 #user commands
-COMMAND_KEYS = ['H', "HELP", "README", 'S', 'C', 'P', 'L', 'A', 'T', 'F', 'Q']
+COMMAND_KEYS = ['H', "HELP", "README", 'S', 'C', 'P', 'L', 'A', 'R', 'T', 'F', 'Q']
 LINK_COMMANDS = ['I', 'E', 'A', 'C', 'IMG']
 
 #print the current url
@@ -93,6 +93,10 @@ while True:
         printurl()
         #print("Generating IA Tree...")
         print("IA Tree - coming soon")
+    elif usrcmd == "R": #[R]ead Page
+        printurl()
+        print("Reading Webpage...")
+        printmultiple(audit.check_full_page(my_url.store.get_url()))
     elif usrcmd == "A": # [A]duit Headings
         print("\nTag Audit")
         printurl()
@@ -110,7 +114,7 @@ while True:
                 usertag = input("\nTag to check->")
                 print("Getting specific tag instances...")
                 printmultiple(audit.check_specific_tags(my_url.store.get_url(), usertag))
-    elif usrcmd == "F": #[F]ull audit
+    elif usrcmd == "F": #[F]ull Audit
         printurl()
         print("Running Full URL Audit...")
 
@@ -124,7 +128,7 @@ while True:
         
         print("\nRunning Link Check...")
         # print(len(audit.check_specific_tags(my_url.store.get_url(), "a")), " <a> Elements")
-        print(len(lnks.get_links(my_url.store.get_url())), " Total Links")
+        print(len(lnks.get_links(my_url.store.get_url())), " Total Unique Links")
         print(len(lnks.get_internal_links(my_url.store.get_url())), " Internal Links")
         print(len(lnks.get_external_links(my_url.store.get_url())), " External Links")
         print(len(lnks.get_contact_links(my_url.store.get_url())), " Contact Links")

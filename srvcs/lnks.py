@@ -36,7 +36,7 @@ def get_internal_links(url: str) -> list[str]:
     for link in links:
         if urlparse(link).netloc == domain:
             locallinks.add(link)
-    return locallinks
+    return sorted(locallinks)
 
 #External links
 def get_external_links(url: str) -> list[str]:
@@ -46,7 +46,7 @@ def get_external_links(url: str) -> list[str]:
     for link in links:
         if urlparse(link).netloc != domain:
             exlinks.add(link)
-    return exlinks
+    return sorted(exlinks)
 
 #Contact links
 def get_contact_links(url: str) -> list[str]:
@@ -68,9 +68,7 @@ def get_contact_links(url: str) -> list[str]:
         full = urljoin(url, href)
         clinks.add(full)
 
-    clinks = sorted(clinks)
-
-    return clinks
+    return sorted(clinks)
 
 #Media links
 def get_image_links(url: str) -> list[str]:
@@ -92,6 +90,4 @@ def get_image_links(url: str) -> list[str]:
         full = urljoin(url, href)
         ilinks.add(full)
 
-    ilinks = sorted(ilinks)
-
-    return ilinks
+    return sorted(ilinks)
