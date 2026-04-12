@@ -1,3 +1,5 @@
+MVP
+
 - [x] `urlias.py`: Main REPL / User Interface
 - [x] `data/urlsav.py`: URL State Management
 - [x] `srvcs/chks.py`: Network Services (Status/Ping)
@@ -7,6 +9,7 @@
 - [ ] `srvcs/iatr.py`: IA Tree Output (ToDo)
 - [ ] `utils/rdbls.py`: Functions for readable output (In Progress)
 - [ ]  Save results to file (ToDo)
+- [ ]  Add timestamps to results (ToDo)
 
 TESTS
 
