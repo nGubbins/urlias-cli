@@ -58,7 +58,7 @@ CHECK COMPLETE.
 *   **`S` | Specific Tag** – Search for content within a user-defined tag.
 *   **`Q` | Back** – Return to main menu.
 
-Example All Headings audit, returns a sorted list of all headigs (h1, h2, h3, h4, h5, h6), including tag type
+Example All Headings audit, returns a sorted list of all headings (h1, h2, h3, h4, h5, h6), including tag type
   ```
   ///Example elements in return list
   ('h1', 'Heading content')
