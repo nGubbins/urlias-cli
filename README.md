@@ -1,23 +1,17 @@
-# URL IA & S
-## URLs, Information Architecture, & Scraping
+### **URL IA & S**
+#### *URLs, Information Architecture, & Scraping*
 
-# ALL COMMANDS
-## S - set url
-  Set the URL to be used by other commands.
-  If you run a command without a URL set you will prompted to add one.
-  Currently, please include the URI scheme such as 'https://'
+---
 
-## C - check url status
-  Returns the status of the URL (200, 404, 403, etc)
+### **CORE COMMANDS**
+*   **`S` | Set URL** – Set target URL (include `https://`).
+*   **`C` | Check Status** – Returns HTTP status code (e.g., 200, 404).
+*   **`P` | Ping** – Check response latency in ms.
+*   **`R` | Read HTML** – List tags and their text content in page order (`h1-h6`, `p`, `table`, `li`).
+*   **`F` | Full Audit** – Runs latency, status, links, and tag checks.
+*   **`Q` | Quit** – Exit URLIAS CLI.
 
-## P - ping url
-  Single response time / latency check.
-
-## R - read html
-  Lists each html element in order it appears on the page ("h1", "h2", "h3", "h4", "h5", "h6", "p", "table", "li")
-
-## F - full url audit
-  Prints site info
+Example Full Audit:
   ```
   ///Example Output
   https://www.scrapethissite.com/pages/simple/
@@ -49,38 +43,24 @@ Running Tag Audit...
 CHECK COMPLETE.
   ```
 
-## L - link check menu
-### A - all links
-  Returns a sorted list of all links
-### I - internal links
-  Returns a sorted list of internal links
-### E - external links
-  Returns a sorted list of external links
-### C - contact links
-  Returns a sorted list of contact links ('mailto:' and 'tel:')
-### IMG - Image links
-  Returns a list of image links (".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg")
-### Q - quit link checks
-  Returns to the main menu
+### **`L` | LINK CHECK MENU**
+*   **`A` | All** – Sorted list of all links.
+*   **`I` | Internal** – Sorted list of same-domain links.
+*   **`E` | External** – Sorted list of outside-domain links.
+*   **`C` | Contact** – Returns `mailto:` and `tel:` links.
+*   **`IMG` | Images** – List of image links (`.jpg`, `.png`, `.webp`, etc.).
+*   **`Q` | Back** – Return to main menu.
 
-## A - Tag Audit Menu
-### A - all headings
-  Returns a sorted list of all headigs (h1, h2, h3, h4, h5, h6), including tag type
+### **`A` | TAG AUDIT MENU**
+*   **`A` | All Headings** – Sorted list with types: `('h1', 'Content')`.
+*   **`R` | Raw Headings** – List of unique heading text only.
+*   **`D` | Duplicates** – Find headings with identical type and content.
+*   **`S` | Specific Tag** – Search for content within a user-defined tag.
+*   **`Q` | Back** – Return to main menu.
+
+Example All Headings audit, returns a sorted list of all headigs (h1, h2, h3, h4, h5, h6), including tag type
   ```
   ///Example elements in return list
   ('h1', 'Heading content')
   ('h2', 'Heading content')
   ```
-### R - all headings (raw)
-  List of all unique headings (does not specify heading type)
-### D - duplicate headings
-  Returns a sorted list of duplicate headings (same type and content).
-### S - specific tag
-  Requests tag to check.
-  Returns a sorted list of content using the specified tag.
-### Q - quit tag audit
-  Returns to the main menu
-
-## T - generate IA tree [coming soon]
-
-## Q - quit URLIAS CLI
