@@ -2,16 +2,21 @@ from bs4 import BeautifulSoup as soupy
 from urllib.parse import urlparse, urljoin
 import requests as rq
 
-###get lists of internal or external links
-#All links
-def get_links(url: str) -> list[str]:
+#Fetch and parse page HTML
+def _fetch_soup(url: str):
     try:
         response = rq.get(url, timeout=10)
         response.raise_for_status()
     except rq.exceptions.RequestException:
-        return []
+        return None
+    return soupy(response.text, "html.parser")
 
-    soup = soupy(response.text, "html.parser")
+###get lists of internal or external links
+#All links
+def get_links(url: str) -> list[str]:
+    soup = _fetch_soup(url)
+    if soup is None:
+        return []
     links = set()
 
     for tag in soup.find_all("a", href=True):
@@ -50,13 +55,9 @@ def get_external_links(url: str) -> list[str]:
 
 #Contact links
 def get_contact_links(url: str) -> list[str]:
-    try:
-        response = rq.get(url, timeout=10)
-        response.raise_for_status()
-    except rq.exceptions.RequestException:
+    soup = _fetch_soup(url)
+    if soup is None:
         return []
-
-    soup = soupy(response.text, "html.parser")
     clinks = set()
 
     for tag in soup.find_all("a", href=True):
@@ -72,13 +73,9 @@ def get_contact_links(url: str) -> list[str]:
 
 #Media links
 def get_image_links(url: str) -> list[str]:
-    try:
-        response = rq.get(url, timeout=10)
-        response.raise_for_status()
-    except rq.exceptions.RequestException:
+    soup = _fetch_soup(url)
+    if soup is None:
         return []
-
-    soup = soupy(response.text, "html.parser")
     ilinks = set()
 
     for tag in soup.find_all("a", href=True):
